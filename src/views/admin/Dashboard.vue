@@ -16,6 +16,11 @@
         <card-social-traffic />
       </div>
     </div>
+    <div class="flex flex-wrap mt-4">
+      <div class="w-full xl:w-8/12 mb-12 xl:mb-0 px-4">
+        <CardActions />
+      </div>
+    </div>
   </div>
 </template>
 <script>
@@ -23,6 +28,7 @@ import CardLineChart from "@/components/Cards/CardLineChart.vue";
 import CardBarChart from "@/components/Cards/CardBarChart.vue";
 import CardPageVisits from "@/components/Cards/CardPageVisits.vue";
 import CardSocialTraffic from "@/components/Cards/CardSocialTraffic.vue";
+import CardActions from "@/components/Cards/CardActions";
 export default {
   name: "dashboard-page",
   components: {
@@ -30,6 +36,7 @@ export default {
     CardBarChart,
     CardPageVisits,
     CardSocialTraffic,
+    CardActions,
   },
 };
 </script>
