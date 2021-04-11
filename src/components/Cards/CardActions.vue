@@ -1,8 +1,7 @@
 <template>
   <div id="example-3">
-    <button v-on:click="say('hello')">Dire salut</button>
 
-    <button v-on:click="rss('hello')"> RSS</button>
+    <button v-on:click="sendMessage('hello')">Send Message</button>
 
     <a
         class="hover:text-blueGray-500 text-blueGray-700 px-3 py-2 flex items-center text-xs uppercase font-bold"
@@ -28,38 +27,31 @@
 // })
 
 export default {
-  methods: {
-    say: function (text) {
-      alert(text);
-    },
-    rss: function (url){
-      $.get(url, function (data) {
-        $(data).find("entry").each(function () {
-          var el = $(this);
-          console.log("------------------------");
-          console.log("title : " + el.find("title").text());
-          console.log("author : " + el.find("author").text());
-          console.log("description: " + el.find("description").text());
-        });
-      });
-    }
-
-  },
-
-
-
-
-  name: "CardActions",
-  data () {
+  data: function() {
     return {
-      title: 'Agidom',
-      items: [
-        {
-          image: 'https://raw.githubusercontent.com/Ashwinvalento/cartoon-avatar/master/lib/images/male/45.png',
-          name: 'Quentin'
-        }
-      ]
+      connection: null
     }
+  },
+  methods: {
+    sendMessage: function(message) {
+      console.log("Hello")
+      console.log(this.connection);
+      this.connection.send(message);
+    }
+  },
+  created: function() {
+    console.log("Starting connection to WebSocket Server")
+    this.connection = new WebSocket("ws://127.0.0.1:4444")
+
+    this.connection.onmessage = function(event) {
+      console.log(event);
+    }
+
+    this.connection.onopen = function(event) {
+      console.log(event)
+      console.log("Successfully connected to the echo websocket server...")
+    }
+
 }
 }
 
