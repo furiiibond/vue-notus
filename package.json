@@ -24,7 +24,8 @@
     "tailwindcss": "2.0.4",
     "vue": "^3.0.11",
     "vue-native-websocket": "^2.0.14",
-    "vue-router": "4.0.5"
+    "vue-router": "4.0.5",
+    "xterm": "^4.11.0"
   },
   "devDependencies": {
     "@babel/core": "7.13.10",
