@@ -6,7 +6,10 @@
     <span>Message is: {{ message }}</span>
     <br>
     <input type="text" v-model="message" placeholder="send command"  v-on:keyup.enter="sendMessage(message)">
-
+    <v-btn v-on:click="gettask()"
+           color="primary"
+           elevation="5"
+    > GET TASKS </v-btn>
     <div id="terminal"></div>
 
   </div>
@@ -38,8 +41,15 @@ export default {
       console.log("sending:"+message)
       console.log(this.connection);
       this.connection.send(message);
-    }
+    },
+    gettask: function () {
+      this.sendMessage("gettasks")
+      this.connection.onmessage = function (event){
+        console.log("respond:"+event.data)
+      }
+    },
   },
+
   created: function() {
     console.log("Starting connection to WebSocket Server")
     this.connection = new WebSocket("ws://127.0.0.1:2607")
@@ -50,10 +60,10 @@ export default {
 
     this.connection.onopen = function(event) {
       console.log(event)
-      console.log("Successfully connected to the echo websocket server...")
+      console.log("Successfully connected to the gripsperfect websocket server...")
     }
 
-}
+  }
 }
 </script>
 
