@@ -115,7 +115,7 @@ export default {
   },
     created: function () {
       console.log("Starting connection to WebSocket Server")
-      this.connection = new WebSocket("ws://127.0.0.1:2607")
+      this.connection = new WebSocket("ws://192.168.0.70:2607")
 
       this.connection.onmessage = function (event) {
         console.log(event);
