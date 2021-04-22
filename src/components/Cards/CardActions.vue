@@ -13,6 +13,11 @@
             class="relative w-full px-4 max-w-full flex-grow flex-1 text-right"
         >
         </div>
+        <ul>
+          <li v-for="(element, index) in test" :key="index">
+            <component :is="element.type" :element="element" />
+          </li>
+        </ul>
         <button v-on:click="sendMessage('hello')">Send Message</button>
         <br><br>
         <span>Message is: {{ message }}</span>
@@ -62,12 +67,18 @@
               >
                 {{element.profil.user}}
               </td>
-              <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4"><i class="fas fa-circle text-orange-500 mr-2"></i> {{element.profil.state}} {{element.profil.published}}/{{element.nbPubli}} </td>
+
+              <td v-if="element.profil.state == 'completed' || element.profil.published == element.nbPubli" class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4"><i class="fas fa-circle text-green-500 mr-2"></i> Terminé </td>
+              <td v-if="element.profil.state == 'error' && element.profil.published == 0" class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4"><i class="fas fa-circle text-red-500 mr-2"></i> Erreur </td>
+              <td v-if="element.profil.state == 'error' && element.profil.published != 0" class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4"><i class="fas fa-circle text-orange-500 mr-2"></i> Partiellement terminé </td>
+              <td v-if="element.profil.state == 'initialized' && element.profil.published != element.nbPubli" class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4"><i class="fas fa-circle text-blueGray-500 mr-2"></i> Initialiser </td>
+              <td v-if="element.profil.state == 'pending' && element.profil.published != element.nbPubli" class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4"><i class="fas fa-circle text-lightBlue-600 mr-2"></i> En Attente </td>
+              <td v-if="element.profil.state == 'running' && element.profil.published != element.nbPubli" class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4"><i class="fas fa-arrow-alt-circle-right text-green-500 mr-2"></i> En cours d'éxecution </td>
+
               <td
                   class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4"
               >
-                <i class="fas fa-arrow-up text-emerald-500 mr-4"></i>
-                46,53%
+                {{element.profil.published}}/{{element.nbPubli}}
               </td>
             </tr>
             </tbody>
@@ -89,7 +100,19 @@ export default {
     return {
       connection: null,
       tasks: {},
-      botsNames: []
+      test : [{
+        "type": "textInput",
+        "name": "myTextinput1",
+        "required": true
+      }, {
+        "type": "radioInput",
+        "name": "unchecked radio input",
+        "checked": false
+      }, {
+        "type": "textInput",
+        "name": "myTextinput3",
+        "required": true
+      }],
     }
   },
   methods: {

@@ -3353,6 +3353,11 @@ select {
   color: rgba(100, 116, 139, var(--tw-text-opacity));
 }
 
+.text-green-500 {
+  --tw-text-opacity: 1;
+  color: rgba(34, 139, 34, var(--tw-text-opacity));
+}
+
 .text-blueGray-600 {
   --tw-text-opacity: 1;
   color: rgba(71, 85, 105, var(--tw-text-opacity));
