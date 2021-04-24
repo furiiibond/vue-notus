@@ -10,7 +10,7 @@
     </div>
     <div class="flex flex-wrap mt-4">
       <div class="w-full xl:w-8/12 mb-12 xl:mb-0 px-4">
-        <card-page-visits />
+        <CardActions :tasks="tasks" @sendMessage="sendMessage($event)" @gettask="gettask($event)" @updateSelected="updateSelected($event)"/>
       </div>
       <div class="w-full xl:w-4/12 px-4">
         <card-social-traffic />
@@ -18,12 +18,7 @@
     </div>
     <div class="flex flex-wrap mt-4">
       <div class="w-full xl:w-8/12 mb-12 xl:mb-0 px-4">
-        <CardActions :tasks="tasks" @sendMessage="sendMessage($event)" @gettask="gettask($event)" @updateSelected="updateSelected($event)"/>
-      </div>
-    </div>
-    <div class="flex flex-wrap mt-4">
-      <div class="w-full xl:w-8/12 mb-12 xl:mb-0 px-4">
-        <CardEditTask :tasks="tasks" :selected="selected" @settasks="settasks($event)"/>
+        <CardEditTask :tasks="tasks" :selected="selected" @settasks="settasks($event)" @updateSelected="updateSelected($event)"/>
       </div>
     </div>
   </div>
@@ -31,7 +26,6 @@
 <script>
 import CardLineChart from "@/components/Cards/CardLineChart.vue";
 import CardBarChart from "@/components/Cards/CardBarChart.vue";
-import CardPageVisits from "@/components/Cards/CardPageVisits.vue";
 import CardSocialTraffic from "@/components/Cards/CardSocialTraffic.vue";
 import CardActions from "@/components/Cards/CardActions";
 import CardEditTask from "@/components/Cards/CardEditTask";
@@ -41,7 +35,6 @@ export default {
     CardEditTask,
     CardLineChart,
     CardBarChart,
-    CardPageVisits,
     CardSocialTraffic,
     CardActions,
   },
