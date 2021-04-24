@@ -13,17 +13,11 @@
             class="relative w-full px-4 max-w-full flex-grow flex-1 text-right"
         >
         </div>
-        <ul>
-          <li v-for="(element, index) in test" :key="index">
-            <component :is="element.type" :element="element" />
-          </li>
-        </ul>
-        <button v-on:click="sendMessage('hello')">Send Message</button>
         <br><br>
-        <span>Message is: {{ message }}</span>
         <br>
-        <input type="text" v-model="message" placeholder="send command"  v-on:keyup.enter="sendMessage(message)">
-        <v-btn v-on:click="gettask()"
+        <input class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none ease-linear transition-all duration-150" type="text" v-model="message" placeholder="send command" id="cmd" v-on:keyup.enter="sendMessage(message)">
+        <v-btn class="bg-blueGray-800 text-white active:bg-blueGray-600 text-sm font-bold uppercase px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 transition-all duration-150"
+               type="button" v-on:click="gettask()"
                color="primary"
                elevation="5"
         > GET TASKS </v-btn>
@@ -95,63 +89,16 @@
 
 
 export default {
-
-  data: function() {
-    return {
-      connection: null,
-      tasks: {},
-      test : [{
-        "type": "textInput",
-        "name": "myTextinput1",
-        "required": true
-      }, {
-        "type": "radioInput",
-        "name": "unchecked radio input",
-        "checked": false
-      }, {
-        "type": "textInput",
-        "name": "myTextinput3",
-        "required": true
-      }],
-    }
-  },
+  props: ['tasks'],
   methods: {
     sendMessage: function (message) {
-      console.log("sending:" + message)
-      console.log(this.connection);
-      this.connection.onmessage = function (event) {
-        console.log(event);
-      }
-      this.connection.send(message);
+      this.$emit('sendMessage', message)
+      document.getElementById('cmd').value = '';
     },
     gettask: function () {
-      this.sendMessage("gettasks")
-      this.connection.onmessage = function (event) {
-        this.settasks(JSON.parse(event.data).tasks)
-      }.bind(this)
+      this.$emit('gettask')
     },
-    settasks :  function (tasks) {
-      this.tasks = tasks;
-    }
-
-
   },
-    created: function () {
-      console.log("Starting connection to WebSocket Server")
-      this.connection = new WebSocket("ws://192.168.0.70:2607")
-
-      this.connection.onmessage = function (event) {
-        console.log(event);
-      }
-
-      this.connection.onopen = function (event) {
-        console.log(event)
-        console.log("Successfully connected to the gripsperfect websocket server...")
-      }
-
-
-    }
-
 }
 </script>
 

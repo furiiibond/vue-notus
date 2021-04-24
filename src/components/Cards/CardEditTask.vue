@@ -1,72 +1,49 @@
 <template>
-  <v-form v-model="valid">
-    <v-container>
-      <v-row>
-        <v-col
-            cols="12"
-            md="4"
-        >
-          <v-text-field
-              v-model="firstname"
-              :rules="nameRules"
-              :counter="10"
-              label="First name"
-              required
-          ></v-text-field>
-        </v-col>
+  <form>
+    <div v-for="element in tasks" :key="element" class="relative w-full mb-3">
+      <label
+          class="block uppercase text-blueGray-600 text-xs font-bold mb-2"
+          htmlFor="grid-password"
+      >
+        Email
+      </label>
+      <input
+          type="text"
+          class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
+          placeholder="Email"
+      />
+    </div>
+    <div>
+      <label class="inline-flex items-center cursor-pointer">
+        <input
+            id="customCheckLogin"
+            type="checkbox"
+            class="form-checkbox border-0 rounded text-blueGray-700 ml-1 w-5 h-5 ease-linear transition-all duration-150"
+        />
+        <span class="ml-2 text-sm font-semibold text-blueGray-600">
+                  </span>
+      </label>
+    </div>
 
-        <v-col
-            cols="12"
-            md="4"
-        >
-          <v-text-field
-              v-model="lastname"
-              :rules="nameRules"
-              :counter="10"
-              label="Last name"
-              required
-          ></v-text-field>
-        </v-col>
-
-        <v-col
-            cols="12"
-            md="4"
-        >
-          <v-text-field
-              v-model="email"
-              :rules="emailRules"
-              label="E-mail"
-              required
-          ></v-text-field>
-        </v-col>
-      </v-row>
-    </v-container>
-  </v-form>
+    <div class="text-center mt-6">
+      <button
+          class="bg-blueGray-800 text-white active:bg-blueGray-600 text-sm font-bold uppercase px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 w-full ease-linear transition-all duration-150"
+          type="button"
+      >
+        Sign In
+      </button>
+    </div>
+  </form>
 </template>
 <script>
-
-import Vue from 'vue'
-import Vuetify from 'vuetify'
-import 'vuetify/dist/vuetify.min.css'
-
-
 export default {
   name: "CardEditTask",
-  data: function() {
+  props: ['username'],
+  data() {
     return {
-      valid: false,
-      firstname: '',
-      lastname: '',
-      nameRules: [
-        v => !!v || 'Name is required',
-        v => v.length <= 10 || 'Name must be less than 10 characters',
-      ],
-      email: '',
-      emailRules: [
-        v => !!v || 'E-mail is required',
-        v => /.+@.+/.test(v) || 'E-mail must be valid',
-      ],
-    }
+      contentVisible: false,
+      test: "hello from form",
+    };
   },
 
 }
