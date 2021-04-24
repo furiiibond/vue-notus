@@ -50,7 +50,7 @@
             </tr>
             </thead>
             <tbody id='table'>
-            <tr v-for="element in tasks" :key="element">
+            <tr v-for="(element,index) in tasks" :key="element" v-on:click="updateSelected(index)">
               <th
                   class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left"
               >
@@ -87,7 +87,6 @@
 
 <script>
 
-
 export default {
   props: ['tasks'],
   methods: {
@@ -98,6 +97,9 @@ export default {
     gettask: function () {
       this.$emit('gettask')
     },
+    updateSelected: function (selected) {
+      this.$emit('updateSelected', selected)
+    }
   },
 }
 </script>

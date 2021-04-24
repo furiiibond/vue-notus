@@ -1,16 +1,17 @@
 <template>
-  <form>
-    <div v-for="element in tasks" :key="element" class="relative w-full mb-3">
+  <form v-if="tasks !== {} && selected !== -1" >
+
+    <div v-for="(element, name) in tasks[selected]" :key="element" class="relative w-full mb-3">
       <label
           class="block uppercase text-blueGray-600 text-xs font-bold mb-2"
           htmlFor="grid-password"
       >
-        Email
+        {{name}}
       </label>
-      <input
-          type="text"
+      <input :value="element"
           class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
           placeholder="Email"
+          type="text"
       />
     </div>
     <div>
@@ -38,13 +39,16 @@
 <script>
 export default {
   name: "CardEditTask",
-  props: ['username'],
+  props: ['tasks','selected'],
   data() {
     return {
-      contentVisible: false,
-      test: "hello from form",
     };
   },
+  methods: {
+    settasks :  function (tasks) {
+      this.$emit('settasks', tasks)
+    }
+  }
 
 }
 </script>

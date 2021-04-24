@@ -18,16 +18,13 @@
     </div>
     <div class="flex flex-wrap mt-4">
       <div class="w-full xl:w-8/12 mb-12 xl:mb-0 px-4">
-        <CardActions :tasks="tasks" @sendMessage="sendMessage($event)" @gettask="gettask($event)"/>
+        <CardActions :tasks="tasks" @sendMessage="sendMessage($event)" @gettask="gettask($event)" @updateSelected="updateSelected($event)"/>
       </div>
     </div>
     <div class="flex flex-wrap mt-4">
       <div class="w-full xl:w-8/12 mb-12 xl:mb-0 px-4">
-        <CardEditTask />
+        <CardEditTask :tasks="tasks" :selected="selected" @settasks="settasks($event)"/>
       </div>
-    </div>
-    <div class="chat-popup" id="myForm">
-      Chat
     </div>
   </div>
 </template>
@@ -52,21 +49,10 @@ export default {
     return {
       connection: null,
       tasks: {},
-      test : [{
-        "type": "textInput",
-        "name": "myTextinput1",
-        "required": true
-      }, {
-        "type": "radioInput",
-        "name": "unchecked radio input",
-        "checked": false
-      }, {
-        "type": "textInput",
-        "name": "myTextinput3",
-        "required": true
-      }],
+      selected: -1,
     }
   },
+
   methods: {
     sendMessage: function (message) {
       console.log("sending:" + message)
@@ -84,10 +70,12 @@ export default {
     },
     settasks :  function (tasks) {
       this.tasks = tasks;
+    },
+    updateSelected: function (selected) {
+      this.selected = selected;
     }
-
-
   },
+
   created: function () {
     console.log("Starting connection to WebSocket Server")
     this.connection = new WebSocket("ws://192.168.0.70:2607")
@@ -100,8 +88,6 @@ export default {
       console.log(event)
       console.log("Successfully connected to the gripsperfect websocket server...")
     }
-
-
   }
 };
 </script>
