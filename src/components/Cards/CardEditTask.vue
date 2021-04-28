@@ -1,19 +1,21 @@
 <template>
   <div v-if="tasks !== {} && selected !== -1"
        class="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-lg rounded"
+       id="CardEditTask"
   >
     <div class="rounded-t mb-0 px-4 py-3 border-0">
-      <div class="relative w-full px-4 max-w-full flex-grow flex-1">
-        <h3 class="font-semibold text-base text-blueGray-700">
-          Modifications
-        </h3>
+      <div class="rounded-t mb-0 px-4 py-3 border-0">
+        <div class="flex flex-wrap items-center">
+          <div class="relative w-full px-4 max-w-full flex-grow flex-1">
+            <h3 class="font-semibold text-base text-blueGray-700"> Modifications </h3>
+          </div>
+          <div class="relative w-full px-4 max-w-full flex-grow flex-1 text-right">
+            <button v-on:click="removeMe()" class="bg-red-500 text-white active:bg-indigo-600 text-xs font-bold uppercase px-3 py-1 rounded outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150" type="button">
+              x </button>
+          </div>
+        </div>
       </div>
-      <br>
-      <v-btn class="bg-blueGray-800 text-white active:bg-blueGray-600 text-sm font-bold uppercase px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 transition-all duration-150"
-             type="button" v-on:click="updateSelected(-1)"
-             color="primary"
-             elevation="5"
-      > GET TASKS </v-btn>
+<br>
   <form>
     <div class="relative w-full mb-3 px-4">
       <label class="block uppercase text-blueGray-600 text-xs font-bold mb-2" htmlFor="grid-password">
@@ -147,8 +149,12 @@ export default {
     settasks :  function (tasks) {
       this.$emit('settasks', tasks)
     },
-    updateSelected: function (selected) {
-      this.$emit('updateSelected', selected)
+    updateSelected: function () {
+      this.$emit('updateSelected', -1)
+    },
+    removeMe: function () {
+      document.getElementById("CardEditTask").setAttribute("class","removed-item relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-lg rounded")
+      setTimeout(this.updateSelected, 600);
     }
   }
 

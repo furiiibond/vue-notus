@@ -2,7 +2,7 @@
   <div>
     <div class="flex flex-wrap">
       <div class="w-full xl:w-8/12 mb-12 xl:mb-0 px-4">
-        <card-line-chart />
+        <card-line-chart :history="history" :tasks="tasks" :selected="selected" :graphOverTime="graphOverTime" ref = "lineChart"/>
       </div>
       <div class="w-full xl:w-4/12 px-4">
         <card-bar-chart />
@@ -42,6 +42,8 @@ export default {
     return {
       connection: null,
       tasks: {},
+      history: {},
+      graphOverTime: [],
       selected: -1,
     }
   },
@@ -56,16 +58,27 @@ export default {
       this.connection.send(message);
     },
     gettask: function () {
-      this.sendMessage("gettasks")
+      this.sendMessage("gettasks");
       this.connection.onmessage = function (event) {
         this.settasks(JSON.parse(event.data).tasks)
+      }.bind(this)
+    },
+    getHistory: function () {
+      this.sendMessage("getHistory")
+      this.connection.onmessage = function (event) {
+        this.setHistory(JSON.parse(event.data))
       }.bind(this)
     },
     settasks :  function (tasks) {
       this.tasks = tasks;
     },
+    setHistory:  function (history) {
+      this.history = history;
+      this. $refs.lineChart.computeResults()
+    },
     updateSelected: function (selected) {
       this.selected = selected;
+      this.getHistory();
     }
   },
 

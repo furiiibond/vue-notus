@@ -9,7 +9,7 @@
             Overview
           </h6>
           <h2 class="text-white text-xl font-semibold">
-            Sales value
+            Nombre de publication
           </h2>
         </div>
       </div>
@@ -26,34 +26,28 @@
 import Chart from "chart.js";
 
 export default {
+  props: ['history', 'tasks', 'selected'],
   mounted: function () {
     this.$nextTick(function () {
       var config = {
         type: "line",
         data: {
           labels: [
-            "January",
-            "February",
-            "March",
-            "April",
-            "May",
-            "June",
-            "July",
           ],
           datasets: [
             {
-              label: new Date().getFullYear(),
+              label: 'Moyenne de publication',
               backgroundColor: "#4c51bf",
               borderColor: "#4c51bf",
-              data: [100, 78, 66, 44, 56, 67, 75],
+              data: [],
               fill: false,
             },
             {
-              label: new Date().getFullYear() - 1,
+              label: 'bot',
               fill: false,
               backgroundColor: "#fff",
               borderColor: "#fff",
-              data: [40, 68, 86, 74, 56, 60, 87],
+              data: [],
             },
           ],
         },
@@ -132,5 +126,43 @@ export default {
       window.myLine = new Chart(ctx, config);
     });
   },
+  methods: {
+    addData: function (label, data, data2) {
+      data = parseInt(data);
+      data2 = parseInt(data2);
+      var chart=window.myLine;
+      chart.data.labels.push(label);
+      chart.data.datasets[0].data.push(data);
+      chart.data.datasets[1].data.push(data2);
+      chart.update();
+    },
+    clearCharts: function (){
+      var chart=window.myLine;
+      chart.data.labels = [];
+      chart.data.datasets[0].data = [];
+      chart.data.datasets[1].data = [];
+      chart.update();
+    },
+    computeResults: function () {
+      this.clearCharts();
+      for (var k in this.history){
+        this.addData(k.substring(6,8)+'-'+ k.substring(4,6),
+            this.getNumberPerDay(this.history[k])/10,
+            this.getNumberPerBot(this.history[k]));
+      }
+    },
+    getNumberPerDay:  function (day) {
+      var totalPubli=0;
+      for (var bot in day){
+        totalPubli += parseInt(day[bot]);
+      }
+      return totalPubli;
+    },
+    getNumberPerBot:  function (day) {
+      var chart=window.myLine;
+      chart.data.datasets[1].label = this.tasks[this.selected].profil.name;
+      return parseInt(day[this.tasks[this.selected].profil.name]);
+    },
+  }
 };
 </script>

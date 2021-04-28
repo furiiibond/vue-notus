@@ -20,8 +20,7 @@
                type="button" v-on:click="gettask()"
                color="primary"
                elevation="5"
-        > GET TASKS </v-btn>
-        <div id="terminal"></div>
+        > Voir les tâches </v-btn>
         <div class="block w-full overflow-x-auto">
           <!-- Projects table -->
           <table class="items-center w-full bg-transparent border-collapse">
@@ -35,17 +34,12 @@
               <th
                   class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left"
               >
-                email
-              </th>
-              <th
-                  class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left"
-              >
                 état
               </th>
               <th
                   class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left"
               >
-                état
+                progression
               </th>
             </tr>
             </thead>
@@ -56,11 +50,6 @@
               >
                 {{element.profil.name}}
               </th>
-              <td
-                  class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4"
-              >
-                {{element.profil.user}}
-              </td>
 
               <td v-if="element.profil.state == 'completed' || element.profil.published == element.nbPubli" class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4"><i class="fas fa-circle text-green-500 mr-2"></i> Terminé </td>
               <td v-if="element.profil.state == 'error' && element.profil.published == 0" class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4"><i class="fas fa-circle text-red-500 mr-2"></i> Erreur </td>
@@ -72,14 +61,20 @@
               <td
                   class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4"
               >
-                {{element.profil.published}}/{{element.nbPubli}}
+                <div class="flex items-center">
+                  <span class="mr-2">
+                  {{element.profil.published}}/{{element.nbPubli}}</span>
+                  <div class="relative w-full">
+                    <div class="overflow-hidden h-2 text-xs flex rounded bg-lightBlue-200">
+                      <div :style="'width:'+(element.profil.published/element.nbPubli)*100+'%;'" class="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-lightBlue-500"></div>
+                    </div>
+                  </div>
+                </div>
               </td>
             </tr>
             </tbody>
           </table>
         </div>
-
-
       </div>
     </div>
   </div>
@@ -99,7 +94,7 @@ export default {
     },
     updateSelected: function (selected) {
       this.$emit('updateSelected', selected)
-    }
+    },
   },
 }
 </script>

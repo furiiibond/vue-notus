@@ -1,11 +1,58 @@
 /*added*/
-.chat-popup {
-  display: none;
-  position: fixed;
-  bottom: 0;
-  right: 15px;
-  border: 3px solid #f1f1f1;
-  z-index: 9;
+.removed-item {
+  animation: removed-item-animation .8s cubic-bezier(.65,-0.02,.72,.29);
+}
+
+@keyframes removed-item-animation {
+  0% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+  30% {
+    opacity: 1;
+    transform: translateX(50px);
+  }
+
+  80% {
+    opacity: 1;
+    transform: translateX(-800px);
+  }
+
+  100% {
+    opacity: 0;
+    transform: translateX(-800px);
+  }
+}
+
+
+li.restored-item {
+  animation:
+          openspace .3s ease forwards,
+          restored-item-animation .5s .3s cubic-bezier(.14,.25,.52,1.56) forwards;
+}
+
+@keyframes openspace {
+  to {
+    height: auto;
+  }
+}
+
+@keyframes restored-item-animation {
+  0% {
+    opacity: 0;
+    transform: translateX(300px);
+  }
+
+  70% {
+    opacity: 1;
+    transform: translateX(-50px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
 }
 /*added*/
 /*! tailwindcss v2.0.4 | MIT License | https://tailwindcss.com */
