@@ -3,6 +3,10 @@
   animation: removed-item-animation .8s cubic-bezier(.65,-0.02,.72,.29);
 }
 
+.on-over-green:hover {
+  background-color: darkgreen;
+}
+
 @keyframes removed-item-animation {
   0% {
     opacity: 1;

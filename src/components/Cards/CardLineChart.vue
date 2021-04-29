@@ -1,5 +1,5 @@
 <template>
-  <div
+  <div v-if="display" id="chartsCard"
     class="relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded bg-blueGray-700"
   >
     <div class="rounded-t mb-0 px-4 py-3 bg-transparent">
@@ -11,6 +11,10 @@
           <h2 class="text-white text-xl font-semibold">
             Nombre de publication
           </h2>
+        </div>
+        <div class="relative w-full px-4 max-w-full flex-grow flex-1 text-right">
+          <button v-on:click="removeMe()" class="bg-red-500 text-white active:bg-indigo-600 text-xs font-bold uppercase px-3 py-1 rounded outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150" type="button">
+            x </button>
         </div>
       </div>
     </div>
@@ -27,6 +31,11 @@ import Chart from "chart.js";
 
 export default {
   props: ['history', 'tasks', 'selected'],
+  data: function() {
+    return {
+      display: true,
+    }
+  },
   mounted: function () {
     this.$nextTick(function () {
       var config = {
@@ -163,6 +172,13 @@ export default {
       chart.data.datasets[1].label = this.tasks[this.selected].profil.name;
       return parseInt(day[this.tasks[this.selected].profil.name]);
     },
+    removeMe: function () {
+      document.getElementById("chartsCard").setAttribute("class","removed-item relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded bg-blueGray-700")
+      setTimeout(this.hideThis, 600);
+    },
+    hideThis: function () {
+      this.display = false;
+    }
   }
 };
 </script>
