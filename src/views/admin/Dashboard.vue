@@ -19,6 +19,7 @@
     <div class="flex flex-wrap mt-4">
       <div class="w-full xl:w-8/12 mb-12 xl:mb-0 px-4">
         <CardEditTask :tasks="tasks" :selected="selected" @settasks="settasks($event)" @updateSelected="updateSelected($event)"/>
+        <Toast ref = "toast"/>
       </div>
     </div>
   </div>
@@ -29,6 +30,8 @@ import CardBarChart from "@/components/Cards/CardBarChart.vue";
 import CardSocialTraffic from "@/components/Cards/CardSocialTraffic.vue";
 import CardActions from "@/components/Cards/CardActions";
 import CardEditTask from "@/components/Cards/CardEditTask";
+import Toast from "@/components/Toast";
+import {createToast} from "mosha-vue-toastify";
 export default {
   name: "dashboard-page",
   components: {
@@ -37,6 +40,7 @@ export default {
     CardBarChart,
     CardSocialTraffic,
     CardActions,
+    Toast,
   },
   data: function() {
     return {
@@ -65,7 +69,7 @@ export default {
     },
     setHistory:  function (history) {
       this.history = history;
-      this. $refs.lineChart.computeResults()
+      this.$refs.lineChart.computeResults();
     },
     updateSelected: function (selected) {
       this.selected = selected;
@@ -77,15 +81,19 @@ export default {
         case 'history':
           this.setHistory(JSON.parse(event.data).message);
           break;
-        case 'toConsole':
-          console.log(JSON.parse(event.data).message);
+        case 'notify':
+          createToast(JSON.parse(event.data).message)
           break;
         case 'tasks':
           console.log(JSON.parse(event.data).message.tasks)
           this.settasks(JSON.parse(event.data).message.tasks);
           break;
+        case 'success':
+          createToast(JSON.parse(event.data).message,{type: 'success'});
+          break;
         default:
           console.log(`Received from Back : ${JSON.parse(event.data).type}.`);
+          createToast("ERROR",{type: 'danger'})
       }
     },
   },
@@ -101,7 +109,9 @@ export default {
     this.connection.onopen = function (event) {
       console.log(event)
       console.log("Successfully connected to the gripsperfect websocket server...")
-    }
+      createToast("Bienvenue");
+      this.gettask();
+    }.bind(this);
   }
 };
 </script>

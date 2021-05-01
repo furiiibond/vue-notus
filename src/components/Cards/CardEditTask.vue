@@ -138,6 +138,7 @@
 
 </template>
 <script>
+
 export default {
   name: "CardEditTask",
   props: ['tasks','selected'],
@@ -155,7 +156,7 @@ export default {
     removeMe: function () {
       document.getElementById("CardEditTask").setAttribute("class","removed-item relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-lg rounded")
       setTimeout(this.updateSelected, 600);
-    }
+    },
   }
 
 }
