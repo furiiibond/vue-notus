@@ -79,11 +79,6 @@ export default {
           break;
         case 'toConsole':
           console.log(JSON.parse(event.data).message);
-          // this.$notify({
-          //   group: 'foo',
-          //   title: 'Important message',
-          //   text: JSON.parse(event.data).message
-          // });
           break;
         case 'tasks':
           console.log(JSON.parse(event.data).message.tasks)
