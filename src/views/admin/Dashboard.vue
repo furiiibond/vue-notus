@@ -52,22 +52,13 @@ export default {
     sendMessage: function (message) {
       console.log("sending:" + message)
       console.log(this.connection);
-      this.connection.onmessage = function (event) {
-        console.log(event);
-      }
       this.connection.send(message);
     },
     gettask: function () {
       this.sendMessage("gettasks");
-      this.connection.onmessage = function (event) {
-        this.settasks(JSON.parse(event.data).tasks)
-      }.bind(this)
     },
     getHistory: function () {
-      this.sendMessage("getHistory")
-      this.connection.onmessage = function (event) {
-        this.setHistory(JSON.parse(event.data))
-      }.bind(this)
+      this.sendMessage("getHistory");
     },
     settasks :  function (tasks) {
       this.tasks = tasks;
@@ -79,7 +70,29 @@ export default {
     updateSelected: function (selected) {
       this.selected = selected;
       this.getHistory();
-    }
+    },
+
+    interpreteur: function (event) {
+      switch (JSON.parse(event.data).type) {
+        case 'history':
+          this.setHistory(JSON.parse(event.data).message);
+          break;
+        case 'toConsole':
+          console.log(JSON.parse(event.data).message);
+          // this.$notify({
+          //   group: 'foo',
+          //   title: 'Important message',
+          //   text: JSON.parse(event.data).message
+          // });
+          break;
+        case 'tasks':
+          console.log(JSON.parse(event.data).message.tasks)
+          this.settasks(JSON.parse(event.data).message.tasks);
+          break;
+        default:
+          console.log(`Received from Back : ${JSON.parse(event.data).type}.`);
+      }
+    },
   },
 
   created: function () {
@@ -87,8 +100,8 @@ export default {
     this.connection = new WebSocket("ws://192.168.0.70:2607")
 
     this.connection.onmessage = function (event) {
-      console.log(event);
-    }
+      this.interpreteur(event);
+    }.bind(this);
 
     this.connection.onopen = function (event) {
       console.log(event)
