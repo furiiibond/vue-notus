@@ -8,6 +8,7 @@
 <script>
 export default {
   name:'ImageUpload',
+  props: ['number'],
   data(){
     return{
       previewImage:null,
@@ -21,7 +22,7 @@ export default {
       reader.readAsDataURL(image);
       reader.onload = e =>{
         this.previewImage = e.target.result;
-        this.$parent.$emit('enableLoading');
+        this.$parent.$emit('enableLoading', this.number);
         this.isWaitingForReturn = true;
         this.$parent.$emit('sendMessage', 'imageSave ' + this.previewImage);
       };

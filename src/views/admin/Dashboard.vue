@@ -18,7 +18,7 @@
     </div>
     <div class="flex flex-wrap mt-4">
       <div class="w-full xl:w-8/12 mb-12 xl:mb-0 px-4">
-        <CardEditTask :tasks="tasks" :selected="selected" @sendMessage="sendMessage($event)" @enableLoading="enableLoading($event)" @settasks="settasks($event)" @updateSelected="updateSelected($event)"/>
+        <CardEditTask ref="cartEdit" :tasks="tasks" :selected="selected" @sendMessage="sendMessage($event)" @enableLoading="enableLoading($event)" @settasks="settasks($event)" @updateSelected="updateSelected($event)"/>
         <Toast ref = "toast"/>
       </div>
     </div>
@@ -57,7 +57,8 @@ export default {
       graphOverTime: [],
       selected: -1,
       isLoading: false,
-      fullPage: true
+      fullPage: true,
+      currentImageEditNumber: -1
     }
   },
 
@@ -84,7 +85,8 @@ export default {
       this.selected = selected;
       this.getHistory();
     },
-    enableLoading() {
+    enableLoading(number) {
+      this.currentImageEditNumber = number;
       this.isLoading = true;
     },
     disableLoading() {
@@ -111,6 +113,7 @@ export default {
           break;
         case 'imageSaved':
           this.disableLoading();
+          this.$refs.cartEdit.fillImgUrl(this.currentImageEditNumber, JSON.parse(event.data).message);
           createToast(JSON.parse(event.data).message,{type: 'success'});
           break;
         default:
