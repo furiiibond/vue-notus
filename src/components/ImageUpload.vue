@@ -10,7 +10,8 @@ export default {
   name:'ImageUpload',
   data(){
     return{
-      previewImage:null
+      previewImage:null,
+      isWaitingForReturn: false
     }
   },
   methods:{
@@ -20,9 +21,9 @@ export default {
       reader.readAsDataURL(image);
       reader.onload = e =>{
         this.previewImage = e.target.result;
-        console.log(this.previewImage);
-        this.$emit('enableLoading');
-        this.$emit('sendMessage', 'imageSave ' + this.previewImage);
+        this.$parent.$emit('enableLoading');
+        this.isWaitingForReturn = true;
+        this.$parent.$emit('sendMessage', 'imageSave ' + this.previewImage);
       };
     }
   }

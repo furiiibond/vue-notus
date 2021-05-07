@@ -18,9 +18,8 @@
     </div>
     <div class="flex flex-wrap mt-4">
       <div class="w-full xl:w-8/12 mb-12 xl:mb-0 px-4">
-        <CardEditTask :tasks="tasks" :selected="selected" @settasks="settasks($event)" @updateSelected="updateSelected($event)"/>
+        <CardEditTask :tasks="tasks" :selected="selected" @sendMessage="sendMessage($event)" @enableLoading="enableLoading($event)" @settasks="settasks($event)" @updateSelected="updateSelected($event)"/>
         <Toast ref = "toast"/>
-        <ImageUpload @sendMessage="sendMessage($event)" @enableLoading="enableLoading($event)" />
       </div>
     </div>
     <loading :active.sync="isLoading"
@@ -36,7 +35,6 @@ import CardSocialTraffic from "@/components/Cards/CardSocialTraffic.vue";
 import CardActions from "@/components/Cards/CardActions";
 import CardEditTask from "@/components/Cards/CardEditTask";
 import Toast from "@/components/Toast";
-import ImageUpload from "@/components/ImageUpload";
 import {createToast} from "mosha-vue-toastify";
 import Loading from 'vue-loading-overlay';
 import 'vue-loading-overlay/dist/vue-loading.css';
@@ -49,7 +47,6 @@ export default {
     CardSocialTraffic,
     CardActions,
     Toast,
-    ImageUpload,
     Loading
   },
   data: function() {

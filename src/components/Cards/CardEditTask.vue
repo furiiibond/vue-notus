@@ -72,6 +72,7 @@
       >
         lien image principal
       </label>
+      <ImageUpload></ImageUpload>
       <input  :value="tasks[selected].profil.imgExeFilePath" id="p-image"
              class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
              type="text"
@@ -84,6 +85,7 @@
       >
         lien image secondaire
       </label>
+      <ImageUpload/>
       <input  :value="tasks[selected].profil.imgExeFilePath2" id="p-image2"
               class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
               type="text"
@@ -139,9 +141,14 @@
 </template>
 <script>
 
+import ImageUpload from "@/components/ImageUpload";
+
 export default {
   name: "CardEditTask",
   props: ['tasks','selected'],
+  components: {
+    ImageUpload
+  },
   data() {
     return {
     };
@@ -164,7 +171,7 @@ export default {
       tasks[this.selected].profil.textToPubli = document.getElementById("p-texttopubli").value;
       tasks[this.selected].profil.textToPubli2 = document.getElementById("p-texttopubli2").value;
       console.log(tasks)
-    }
+    },
   }
 
 }
