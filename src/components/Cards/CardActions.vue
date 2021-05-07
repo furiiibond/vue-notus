@@ -56,7 +56,7 @@
               <td v-if="element.profil.state == 'error' && element.profil.published != 0" class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4"><i class="fas fa-circle text-orange-500 mr-2"></i> Partiellement terminé </td>
               <td v-if="element.profil.state == 'initialized' && element.profil.published != element.nbPubli" class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4"><i class="fas fa-circle text-blueGray-500 mr-2"></i> Initialiser </td>
               <td v-if="element.profil.state == 'pending' && element.profil.published != element.nbPubli" class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4"><i class="fas fa-circle text-lightBlue-600 mr-2"></i> En Attente </td>
-              <td v-if="element.profil.state == 'running' && element.profil.published != element.nbPubli" class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4"><i class="fas fa-arrow-alt-circle-right text-green-500 mr-2"></i> En cours d'éxecution </td>
+              <td v-if="element.profil.state == 'running' && element.profil.published != element.nbPubli" class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4"><i class="clignote fas fa-arrow-alt-circle-right text-green-500 mr-2"></i> En cours d'éxecution </td>
 
               <td
                   class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4"

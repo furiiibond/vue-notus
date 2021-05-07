@@ -125,7 +125,7 @@
       />
     </div>
     <div class="text-center mt-6">
-      <button
+      <button v-on:click="updateTasks(tasks)"
           class="bg-blueGray-800 on-over-green text-white active:bg-blueGray-600 text-sm font-bold uppercase px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 w-full ease-linear transition-all duration-150"
           type="button"
       >
@@ -157,6 +157,14 @@ export default {
       document.getElementById("CardEditTask").setAttribute("class","removed-item relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-lg rounded")
       setTimeout(this.updateSelected, 600);
     },
+    updateTasks: function (tasks) {
+      tasks[this.selected].profil.name = document.getElementById("p-name").value;
+      tasks[this.selected].profil.user = document.getElementById("p-user").value;
+      tasks[this.selected].profil.password = document.getElementById("p-password").value;
+      tasks[this.selected].profil.textToPubli = document.getElementById("p-texttopubli").value;
+      tasks[this.selected].profil.textToPubli2 = document.getElementById("p-texttopubli2").value;
+      console.log(tasks)
+    }
   }
 
 }

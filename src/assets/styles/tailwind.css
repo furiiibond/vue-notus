@@ -1,4 +1,17 @@
 /*added*/
+.clignote  {
+  animation-duration: .8s;
+  animation-name: clignoter;
+  animation-iteration-count: infinite;
+  transition: none;
+}
+
+@keyframes clignoter {
+  0%   { opacity:1; }
+  40%   {opacity:0.5; }
+  100% { opacity:1; }
+}
+
 .removed-item {
   animation: removed-item-animation .8s cubic-bezier(.65,-0.02,.72,.29);
 }

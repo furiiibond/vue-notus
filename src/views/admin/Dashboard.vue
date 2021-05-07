@@ -20,8 +20,13 @@
       <div class="w-full xl:w-8/12 mb-12 xl:mb-0 px-4">
         <CardEditTask :tasks="tasks" :selected="selected" @settasks="settasks($event)" @updateSelected="updateSelected($event)"/>
         <Toast ref = "toast"/>
+        <ImageUpload @sendMessage="sendMessage($event)" @enableLoading="enableLoading($event)" />
       </div>
     </div>
+    <loading :active.sync="isLoading"
+             :can-cancel="true"
+             :on-cancel="onCancel"
+             :is-full-page="fullPage"></loading>
   </div>
 </template>
 <script>
@@ -31,7 +36,10 @@ import CardSocialTraffic from "@/components/Cards/CardSocialTraffic.vue";
 import CardActions from "@/components/Cards/CardActions";
 import CardEditTask from "@/components/Cards/CardEditTask";
 import Toast from "@/components/Toast";
+import ImageUpload from "@/components/ImageUpload";
 import {createToast} from "mosha-vue-toastify";
+import Loading from 'vue-loading-overlay';
+import 'vue-loading-overlay/dist/vue-loading.css';
 export default {
   name: "dashboard-page",
   components: {
@@ -41,6 +49,8 @@ export default {
     CardSocialTraffic,
     CardActions,
     Toast,
+    ImageUpload,
+    Loading
   },
   data: function() {
     return {
@@ -49,6 +59,8 @@ export default {
       history: {},
       graphOverTime: [],
       selected: -1,
+      isLoading: false,
+      fullPage: true
     }
   },
 
@@ -75,6 +87,15 @@ export default {
       this.selected = selected;
       this.getHistory();
     },
+    enableLoading() {
+      this.isLoading = true;
+    },
+    disableLoading() {
+      this.isLoading = false;
+    },
+    onCancel() {
+      console.log('User cancelled the loader.')
+    },
 
     interpreteur: function (event) {
       switch (JSON.parse(event.data).type) {
@@ -89,6 +110,10 @@ export default {
           this.settasks(JSON.parse(event.data).message.tasks);
           break;
         case 'success':
+          createToast(JSON.parse(event.data).message,{type: 'success'});
+          break;
+        case 'imageSaved':
+          this.disableLoading();
           createToast(JSON.parse(event.data).message,{type: 'success'});
           break;
         default:
