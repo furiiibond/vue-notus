@@ -18,7 +18,7 @@
     </div>
     <div class="flex flex-wrap mt-4">
       <div class="w-full xl:w-8/12 mb-12 xl:mb-0 px-4">
-        <CardEditTask ref="cartEdit" :tasks="tasks" :selected="selected" @sendMessage="sendMessage($event)" @enableLoading="enableLoading($event)" @settasks="settasks($event)" @updateSelected="updateSelected($event)"/>
+        <CardEditTask ref="cartEdit" @saveTasks="this.saveTasks()" :tasks="tasks" :selected="selected" @sendMessage="sendMessage($event)" @enableLoading="enableLoading($event)" @settasks="settasks($event)" @updateSelected="updateSelected($event)"/>
         <Toast ref = "toast"/>
       </div>
     </div>
@@ -53,6 +53,7 @@ export default {
     return {
       connection: null,
       tasks: {},
+      tasksFull: {},
       history: {},
       graphOverTime: [],
       selected: -1,
@@ -67,6 +68,10 @@ export default {
       console.log("sending:" + message)
       console.log(this.connection);
       this.connection.send(message);
+    },
+    saveTasks: function () {
+      this.tasksFull.tasks = this.tasks;
+      this.sendMessage('saveTasks '+ JSON.stringify(this.tasksFull));
     },
     gettask: function () {
       this.sendMessage("gettasks");
@@ -107,6 +112,7 @@ export default {
         case 'tasks':
           console.log(JSON.parse(event.data).message.tasks)
           this.settasks(JSON.parse(event.data).message.tasks);
+          this.tasksFull = JSON.parse(event.data).message;
           break;
         case 'success':
           createToast(JSON.parse(event.data).message,{type: 'success'});

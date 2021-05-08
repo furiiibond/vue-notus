@@ -1,7 +1,8 @@
-<template xmlns:src="http://www.w3.org/1999/xhtml">
-  <div>
-    <img src:this.previewImage class="uploading-image" />
-    <input type="file" accept="image/jpeg" @change=uploadImage>
+<template>
+  <div class="imagePrevewArea">
+    <img :src="this.previewImage" class="uploading-image" />
+    <label for="file" class="bg-blueGray-800 text-white active:bg-blueGray-600 text-sm font-bold uppercase px-6 py-2 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 transition-all duration-150">Choisir une image</label>
+    <input id="file" type="file" class="input-file" accept="image/*" @change=uploadImage>
   </div>
 </template>
 
@@ -11,7 +12,7 @@ export default {
   props: ['number'],
   data(){
     return{
-      previewImage:null,
+      previewImage: null,
       isWaitingForReturn: false
     }
   },
@@ -30,11 +31,3 @@ export default {
   }
 }  // missing closure added
 </script>
-
-
-
-<style>
-.uploading-image{
-  display:flex;
-}
-</style>

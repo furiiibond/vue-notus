@@ -122,6 +122,7 @@
         Nombre de publication par jours (10 recommandé)
       </label>
       <input :value="tasks[selected].nbPubli"
+             id="nbPubli"
              class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
              type="number" min="0" max="100"
       />
@@ -170,7 +171,13 @@ export default {
       tasks[this.selected].profil.password = document.getElementById("p-password").value;
       tasks[this.selected].profil.textToPubli = document.getElementById("p-texttopubli").value;
       tasks[this.selected].profil.textToPubli2 = document.getElementById("p-texttopubli2").value;
-      console.log(tasks)
+      tasks[this.selected].profil.imgExeFilePath = document.getElementById("p-image").value;
+      tasks[this.selected].profil.imgExeFilePath2 = document.getElementById("p-image2").value;
+      tasks[this.selected].timer = parseInt(document.getElementById("timer").value);
+      tasks[this.selected].checkKeyWord = document.getElementById("checkKeyWord").checked;
+      tasks[this.selected].nbPubli = parseInt(document.getElementById("nbPubli").value);
+      this.settasks(tasks);
+      this.$emit('saveTasks')
     },
     fillImgUrl: function (imageNumber, link) {
       console.log("number" + imageNumber + link)

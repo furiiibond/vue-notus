@@ -1,4 +1,27 @@
 /*added*/
+.label-file {
+  cursor: pointer;
+  color: #00b1ca;
+  font-weight: bold;
+}
+.label-file:hover {
+  color: #25a5c4;
+}
+.input-file {
+     display: none;
+}
+.uploading-image {
+  display: flex;
+  max-width: 300px;
+  max-height: 300px;
+}
+
+.imagePrevewArea {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
 .clignote  {
   animation-duration: .8s;
   animation-name: clignoter;
