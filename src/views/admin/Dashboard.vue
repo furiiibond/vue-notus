@@ -47,7 +47,7 @@ export default {
     CardSocialTraffic,
     CardActions,
     Toast,
-    Loading
+    Loading,
   },
   data: function() {
     return {
@@ -100,6 +100,11 @@ export default {
     onCancel() {
       console.log('User cancelled the loader.')
     },
+    askForceStart(tasksNames) {
+      if ( confirm( "Des Robot sont en cours d'execution, forcer le lancement?" ) ) {
+        this.sendMessage("startTasksByName "+tasksNames+" @force")
+      }
+    },
 
     interpreteur: function (event) {
       switch (JSON.parse(event.data).type) {
@@ -117,10 +122,19 @@ export default {
         case 'success':
           createToast(JSON.parse(event.data).message,{type: 'success'});
           break;
+        case 'warning':
+          createToast(JSON.parse(event.data).message,{type: 'warning'});
+          break;
+        case 'error':
+          createToast(JSON.parse(event.data).message,{type: 'danger'});
+          break;
         case 'imageSaved':
           this.disableLoading();
           this.$refs.cartEdit.fillImgUrl(this.currentImageEditNumber, JSON.parse(event.data).message);
           createToast(JSON.parse(event.data).message,{type: 'success'});
+          break;
+        case 'forceTasksStart':
+          this.askForceStart(JSON.parse(event.data).message);
           break;
         default:
           console.log(`Received from Back : ${JSON.parse(event.data).type}.`);

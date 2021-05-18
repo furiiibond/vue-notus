@@ -170,7 +170,8 @@ export default {
     getNumberPerBot:  function (day) {
       var chart=window.myLine;
       chart.data.datasets[1].label = this.tasks[this.selected].profil.name;
-      return parseInt(day[this.tasks[this.selected].profil.name]);
+      let number = parseInt(day[this.tasks[this.selected].profil.name]);
+      return ! isNaN(number) ? number : 0;
     },
     removeMe: function () {
       document.getElementById("chartsCard").setAttribute("class","removed-item relative flex flex-col min-w-0 break-words w-full mb-6 shadow-lg rounded bg-blueGray-700")

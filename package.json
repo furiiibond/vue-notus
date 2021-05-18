@@ -13,6 +13,7 @@
     "install:clean": "rm -rf node_modules/ && rm -rf package-lock.json && npm install && npm run build:tailwind && npm run serve"
   },
   "dependencies": {
+    "@burhanahmeed/vue-modal-2": "^1.1.11",
     "@fortawesome/fontawesome-free": "5.15.3",
     "@kyvg/vue3-notification": "^2.2.5",
     "@popperjs/core": "2.9.1",
@@ -24,11 +25,13 @@
     "gulp-append-prepend": "1.0.8",
     "mosha-vue-toastify": "^1.0.11",
     "tailwindcss": "2.0.4",
+    "v-easy-dialog": "^1.0.6",
     "vue": "^3.0.7",
     "vue-form-generator": "^2.3.4",
     "vue-loading-overlay": "^4.0.1",
     "vue-native-websocket": "^2.0.14",
     "vue-notification": "^1.3.20",
+    "vue-promise-dialogs": "^1.0.2",
     "vue-router": "4.0.5",
     "vuetify": "^2.4.11",
     "xterm": "^4.11.0"
@@ -44,7 +47,9 @@
     "eslint-plugin-vue": "7.7.0",
     "postcss": "8.2.8",
     "vue-cli-plugin-vuetify": "~2.3.1",
-    "vue-template-compiler": "2.6.12"
+    "vue-confirm-dialog": "^1.0.2",
+    "vue-template-compiler": "2.6.12",
+    "vuejs-dialog": "^1.4.2"
   },
   "eslintConfig": {
     "root": true,
