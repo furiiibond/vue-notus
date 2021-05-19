@@ -5,7 +5,7 @@
         <CardActions :tasks="tasks" @sendMessage="sendMessage($event)" @gettask="gettask($event)" @updateSelected="updateSelected($event)"/>
       </div>
       <div class="w-full xl:w-4/12 px-4">
-        <card-bar-chart />
+        <CardEditSettings :settings="settings" @saveSettings="this.saveSettings()" />
       </div>
     </div>
     <div class="flex flex-wrap mt-4">
@@ -30,10 +30,10 @@
 </template>
 <script>
 import CardLineChart from "@/components/Cards/CardLineChart.vue";
-import CardBarChart from "@/components/Cards/CardBarChart.vue";
 import CardSocialTraffic from "@/components/Cards/CardSocialTraffic.vue";
 import CardActions from "@/components/Cards/CardActions";
 import CardEditTask from "@/components/Cards/CardEditTask";
+import CardEditSettings from "@/components/Cards/CardEditSettings";
 import Toast from "@/components/Toast";
 import {createToast} from "mosha-vue-toastify";
 import Loading from 'vue-loading-overlay';
@@ -43,18 +43,19 @@ export default {
   components: {
     CardEditTask,
     CardLineChart,
-    CardBarChart,
     CardSocialTraffic,
     CardActions,
     Toast,
     Loading,
+    CardEditSettings
   },
   data: function() {
     return {
       connection: null,
       tasks: {},
-      tasksFull: {},
       history: {},
+      settings: {},
+      tasksFull: {},
       graphOverTime: [],
       selected: -1,
       isLoading: false,
@@ -73,11 +74,17 @@ export default {
       this.tasksFull.tasks = this.tasks;
       this.sendMessage('saveTasks '+ JSON.stringify(this.tasksFull));
     },
+    saveSettings: function () {
+      this.sendMessage('saveSettings '+ JSON.stringify(this.settings));
+    },
     gettask: function () {
       this.sendMessage("gettasks");
     },
     getHistory: function () {
       this.sendMessage("getHistory");
+    },
+    getSettings: function () {
+      this.sendMessage("getSettings");
     },
     settasks :  function (tasks) {
       this.tasks = tasks;
@@ -85,6 +92,10 @@ export default {
     setHistory:  function (history) {
       this.history = history;
       this.$refs.lineChart.computeResults();
+    },
+    setSettings: function (settings) {
+      this.settings = settings;
+      this.$refs.settings.computeResults();
     },
     updateSelected: function (selected) {
       this.selected = selected;
@@ -110,6 +121,9 @@ export default {
       switch (JSON.parse(event.data).type) {
         case 'history':
           this.setHistory(JSON.parse(event.data).message);
+          break;
+        case 'settings':
+          this.setSettings(JSON.parse(event.data).message);
           break;
         case 'notify':
           createToast(JSON.parse(event.data).message)
@@ -156,6 +170,7 @@ export default {
       console.log("Successfully connected to the gripsperfect websocket server...")
       createToast("Bienvenue");
       this.gettask();
+      this.getSettings();
     }.bind(this);
   }
 };
