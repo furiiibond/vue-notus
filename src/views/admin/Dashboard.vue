@@ -2,7 +2,7 @@
   <div>
     <div class="flex flex-wrap">
       <div class="w-full xl:w-8/12 mb-12 xl:mb-0 px-4">
-        <CardActions :tasks="tasks" @sendMessage="sendMessage($event)" @gettask="gettask($event)" @updateSelected="updateSelected($event)"/>
+        <CardActions :tasks="tasks" @sendMessage="sendMessage($event)" @gettask="gettask($event)" @updateSelected="updateSelected($event)" @startTasksByName="startTasksByName($event)"/>
       </div>
       <div class="w-full xl:w-4/12 px-4">
         <CardEditSettings :settings="settings" @saveSettings="this.saveSettings()" />
@@ -73,6 +73,11 @@ export default {
     saveTasks: function () {
       this.tasksFull.tasks = this.tasks;
       this.sendMessage('saveTasks '+ JSON.stringify(this.tasksFull));
+    },
+    startTasksByName: function (tasksNames) {
+      console.log(tasksNames)
+      let tasksNameString = tasksNames.toString().replaceAll(',', ' ');
+      this.sendMessage('startTasksByName '+ tasksNameString);
     },
     saveSettings: function () {
       this.sendMessage('saveSettings '+ JSON.stringify(this.settings));

@@ -48,6 +48,70 @@
                   </span>
           </label>
         </div>
+        <div class="relative w-full mb-3 px-4">
+          <label class="inline-flex items-center cursor-pointer">
+            <label class="switch">
+              <input :checked='(String(settings.enableBackupDB).toLowerCase() == "true")'
+                     id="enableBackupDB"
+                     type="checkbox"
+                     class="form-checkbox border-0 rounded text-blueGray-700 ml-1 w-5 h-5 ease-linear transition-all duration-150"
+              />
+              <span class="slider round"></span>
+            </label>
+            <br><br>
+            <span class="ml-2 text-sm font-semibold text-blueGray-600">
+                   Sauvegarde de la base de données
+                  </span>
+          </label>
+        </div>
+        <div class="relative w-full mb-3 px-4">
+          <label class="inline-flex items-center cursor-pointer">
+            <label class="switch">
+              <input :checked='(String(settings.enableTaskScheduler).toLowerCase() == "true")'
+                     id="enableTaskScheduler"
+                     type="checkbox"
+                     class="form-checkbox border-0 rounded text-blueGray-700 ml-1 w-5 h-5 ease-linear transition-all duration-150"
+              />
+              <span class="slider round"></span>
+            </label>
+            <br><br>
+            <span class="ml-2 text-sm font-semibold text-blueGray-600">
+                   Planificateur de tâches
+                  </span>
+          </label>
+        </div>
+        <div class="relative w-full mb-3 px-4">
+          <label class="inline-flex items-center cursor-pointer">
+            <label class="switch">
+              <input :checked='(String(settings.chromeKillerEnable).toLowerCase() == "true")'
+                     id="chromeKillerEnable"
+                     type="checkbox"
+                     class="form-checkbox border-0 rounded text-blueGray-700 ml-1 w-5 h-5 ease-linear transition-all duration-150"
+              />
+              <span class="slider round"></span>
+            </label>
+            <br><br>
+            <span class="ml-2 text-sm font-semibold text-blueGray-600">
+                   Tueur de chrome
+                  </span>
+          </label>
+        </div>
+        <div class="relative w-full mb-3 px-4">
+          <label class="inline-flex items-center cursor-pointer">
+            <label class="switch">
+              <input :checked='(String(settings.enableProxy).toLowerCase() == "true")'
+                     id="enableProxy"
+                     type="checkbox"
+                     class="form-checkbox border-0 rounded text-blueGray-700 ml-1 w-5 h-5 ease-linear transition-all duration-150"
+              />
+              <span class="slider round"></span>
+            </label>
+            <br><br>
+            <span class="ml-2 text-sm font-semibold text-blueGray-600">
+                   Proxy TOR
+                  </span>
+          </label>
+        </div>
         <div class="text-center mt-6">
           <button v-on:click="updateSettings(settings)"
                   class="bg-blueGray-800 on-over-green text-white active:bg-blueGray-600 text-sm font-bold uppercase px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 w-full ease-linear transition-all duration-150"
@@ -83,6 +147,12 @@ export default {
       this.display = false;
     },
     updateSettings: function (settings) {
+      settings.autoAddLink = document.getElementById("autoAddLink").checked;
+      settings.executionParallelTask = document.getElementById("executionParallelTask").checked;
+      settings.enableBackupDB = document.getElementById("enableBackupDB").checked;
+      settings.enableTaskScheduler = document.getElementById("enableTaskScheduler").checked;
+      settings.chromeKillerEnable = document.getElementById("chromeKillerEnable").checked;
+      settings.enableProxy = document.getElementById("enableProxy").checked;
       this.setSettings(settings);
       this.$emit('saveSettings')
     },

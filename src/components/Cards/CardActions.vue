@@ -21,6 +21,11 @@
                color="primary"
                elevation="5"
         > Voir les tâches </v-btn>
+        <v-btn class="bg-blueGray-800 text-white active:bg-blueGray-600 text-sm font-bold uppercase px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 transition-all duration-150"
+               type="button" v-on:click="startSelectedTasks()"
+               color="primary"
+               elevation="5"
+        > Démarrer les tâches sélectionnées </v-btn>
         <div class="block w-full overflow-x-auto">
           <!-- Projects table -->
           <table class="items-center w-full bg-transparent border-collapse">
@@ -41,6 +46,11 @@
               >
                 progression
               </th>
+              <th
+                  class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left"
+              >
+                selection
+              </th>
             </tr>
             </thead>
             <tbody id='table'>
@@ -58,9 +68,7 @@
               <td v-if="element.profil.state == 'pending' && element.profil.published != element.nbPubli" class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4"><i class="fas fa-circle text-lightBlue-600 mr-2"></i> En Attente </td>
               <td v-if="element.profil.state == 'running' && element.profil.published != element.nbPubli" class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4"><i class="clignote fas fa-arrow-alt-circle-right text-green-500 mr-2"></i> En cours d'éxecution </td>
 
-              <td
-                  class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4"
-              >
+              <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
                 <div class="flex items-center">
                   <span class="mr-2">
                   {{element.profil.published}}/{{element.nbPubli}}</span>
@@ -71,6 +79,19 @@
                   </div>
                 </div>
               </td>
+
+              <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
+                <div class="flex items-center">
+                  <label class="inline-flex items-center cursor-pointer">
+                    <input :id="'selected.'+element.profil.name"
+                           type="checkbox"
+                           class="form-checkbox border-1 rounded text-blueGray-700 ml-1 w-5 h-5 ease-linear transition-all duration-150"
+                    />
+
+                  </label>
+                </div>
+              </td>
+
             </tr>
             </tbody>
           </table>
@@ -95,6 +116,18 @@ export default {
     updateSelected: function (selected) {
       this.$emit('updateSelected', selected)
     },
+    getAllSelectedTasksNames: function () {
+      let tasksSelectedNames = [];
+      this.tasks.forEach( function(task) {
+        if (document.getElementById('selected.'+task.profil.name).checked) {
+          tasksSelectedNames.push(task.profil.name);
+        }}, this);
+      return tasksSelectedNames;
+    },
+    startSelectedTasks: function () {
+      console.log(this.getAllSelectedTasksNames())
+      this.$emit('startTasksByName', this.getAllSelectedTasksNames())
+    }
   },
 }
 </script>
