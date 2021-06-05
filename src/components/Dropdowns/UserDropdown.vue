@@ -12,7 +12,8 @@
         >
           <img
             alt="..."
-            class="w-full rounded-full align-middle border-none shadow-lg"
+            class="scaleUpMouse"
+            style="width: 50%"
             :src="image"
           />
         </span>
@@ -58,13 +59,13 @@
 <script>
 import { createPopper } from "@popperjs/core";
 
-import image from "@/assets/img/team-1-800x800.jpg";
+import iconDropDown from "@/assets/img/dropDownIcon.png";
 
 export default {
   data() {
     return {
       dropdownPopoverShow: false,
-      image: image,
+      image: iconDropDown,
     };
   },
   methods: {
