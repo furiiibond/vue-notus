@@ -21,6 +21,10 @@
         <CardEditTask ref="cartEdit" @saveTasks="this.saveTasks()" :tasks="tasks" :selected="selected" @sendMessage="sendMessage($event)" @enableLoading="enableLoading($event)" @settasks="settasks($event)" @updateSelected="updateSelected($event)"/>
         <Toast ref = "toast"/>
       </div>
+      <div class="w-full xl:w-8/12 mb-12 xl:mb-0 px-4">
+        <CardMultipleEditTask ref="CardMultipleEditTask" @saveTasks="this.saveTasks()" :tasks="tasks" :selected="selected" @sendMessage="sendMessage($event)" @enableLoading="enableLoading($event)" @settasks="settasks($event)" @updateSelected="updateSelected($event)"/>
+        <Toast ref = "toast"/>
+      </div>
     </div>
     <loading :active.sync="isLoading"
              :can-cancel="true"
@@ -38,6 +42,7 @@ import Toast from "@/components/Toast";
 import {createToast} from "mosha-vue-toastify";
 import Loading from 'vue-loading-overlay';
 import 'vue-loading-overlay/dist/vue-loading.css';
+import CardMultipleEditTask from "@/components/Cards/CardMultipleEditTask";
 export default {
   name: "dashboard-page",
   components: {
@@ -47,7 +52,8 @@ export default {
     CardActions,
     Toast,
     Loading,
-    CardEditSettings
+    CardEditSettings,
+    CardMultipleEditTask
   },
   data: function() {
     return {
