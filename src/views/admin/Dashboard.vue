@@ -161,6 +161,9 @@ export default {
         case 'forceTasksStart':
           this.askForceStart(JSON.parse(event.data).message);
           break;
+        case 'countries':
+          this.$refs.cartEdit.setCountries(JSON.parse(event.data).message.split('|'));
+          break;
         default:
           console.log(`Received from Back : ${JSON.parse(event.data).type}.`);
           createToast("ERROR",{type: 'danger'})
@@ -170,7 +173,7 @@ export default {
 
   created: function () {
     console.log("Starting connection to WebSocket Server")
-    this.connection = new WebSocket("ws://192.168.0.70:2607")
+    this.connection = new WebSocket("ws://192.168.0.161:2607")
 
     this.connection.onmessage = function (event) {
       this.interpreteur(event);
