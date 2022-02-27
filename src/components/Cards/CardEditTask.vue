@@ -232,10 +232,7 @@ export default {
     },
     deleteCurrentTask: function (tasks) {
       if ( confirm( "Etes-vous sûr de supprimer cette tâche : " + tasks[this.selected].profil.name) ) {
-        delete tasks[this.selected];
-        console.log(tasks)
-        this.settasks(tasks);
-        this.$emit('saveTasks')
+        this.$emit('deleteTask', tasks[this.selected])
       }
     },
     fillImgUrl: function (imageNumber, link) {

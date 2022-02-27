@@ -18,11 +18,11 @@
     </div>
     <div class="flex flex-wrap mt-4">
       <div class="w-full xl:w-8/12 mb-12 xl:mb-0 px-4">
-        <CardEditTask ref="cartEdit" @saveTasks="this.saveTasks()" :tasks="tasks" :selected="selected" @sendMessage="sendMessage($event)" @enableLoading="enableLoading($event)" @settasks="settasks($event)" @updateSelected="updateSelected($event)"/>
+        <CardEditTask ref="cartEdit" @saveTasks="this.saveTasks()" :tasks="tasks" :selected="selected" @sendMessage="sendMessage($event)" @enableLoading="enableLoading($event)" @settasks="settasks($event)"  @deleteTask="deleteTask($event)" @updateSelected="updateSelected($event)"/>
         <Toast ref = "toast"/>
       </div>
       <div class="w-full xl:w-8/12 mb-12 xl:mb-0 px-4">
-        <CardMultipleEditTask ref="CardMultipleEditTask" @saveTasks="this.saveTasks()" :tasks="tasks" :selected="selected" @sendMessage="sendMessage($event)" @enableLoading="enableLoading($event)" @settasks="settasks($event)" @updateSelected="updateSelected($event)"/>
+        <CardMultipleEditTask ref="CardMultipleEditTask" @saveTasks="this.saveTasks()" :tasks="tasks" :selected="selected" @sendMessage="sendMessage($event)" @enableLoading="enableLoading($event)" @settasks="settasks($event)" @deleteTask="deleteTask($event)" @updateSelected="updateSelected($event)"/>
         <Toast ref = "toast"/>
       </div>
     </div>
@@ -79,6 +79,9 @@ export default {
     saveTasks: function () {
       this.tasksFull.tasks = this.tasks;
       this.sendMessage('saveTasks '+ JSON.stringify(this.tasksFull));
+    },
+    deleteTask: function (task) {
+      this.sendMessage('deleteTask '+ JSON.stringify(task))
     },
     startTasksByName: function (tasksNames) {
       console.log(tasksNames)
@@ -173,7 +176,7 @@ export default {
 
   created: function () {
     console.log("Starting connection to WebSocket Server")
-    this.connection = new WebSocket("ws://192.168.0.148:2607")
+    this.connection = new WebSocket("ws://192.168.0.70:2607")
 
     this.connection.onmessage = function (event) {
       this.interpreteur(event);

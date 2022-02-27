@@ -128,6 +128,22 @@
                   </span>
           </label>
         </div>
+        <div class="relative w-full mb-3 px-4">
+          <label class="inline-flex items-center cursor-pointer">
+            <label class="switch">
+              <input :checked='(String(settings.pushbullet).toLowerCase() == "true")'
+                     id="pushbullet"
+                     type="checkbox"
+                     class="form-checkbox border-0 rounded text-blueGray-700 ml-1 w-5 h-5 ease-linear transition-all duration-150"
+              />
+              <span class="slider round"></span>
+            </label>
+            <br><br>
+            <span class="ml-2 text-sm font-semibold text-blueGray-600">
+                   Notifications Pushbullet
+                  </span>
+          </label>
+        </div>
         <div class="text-center mt-6">
           <button v-on:click="updateSettings(settings)"
                   class="bg-blueGray-800 on-over-green text-white active:bg-blueGray-600 text-sm font-bold uppercase px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 w-full ease-linear transition-all duration-150"
@@ -170,6 +186,7 @@ export default {
       settings.chromeKillerEnable = document.getElementById("chromeKillerEnable").checked;
       settings.enableProxy = document.getElementById("enableProxy").checked;
       settings.machineGunMode = document.getElementById("machineGunMode").checked;
+      settings.pushbullet = document.getElementById("pushbullet").checked;
       this.setSettings(settings);
       this.$emit('saveSettings')
     },
