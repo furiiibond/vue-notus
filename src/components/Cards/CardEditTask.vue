@@ -206,7 +206,8 @@ export default {
     },
     addCountryFromInput: function () {
       let newCountryName = document.getElementById('newCountry').value;
-      if (this.countries.contain(newCountryName)) {   //todo
+      console.log(this.countries);
+      if (this.countries.includes(newCountryName)) {   //todo
         let p =document.createElement("p");
         p.className = 'border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left';
         p.textContent = newCountryName
@@ -226,7 +227,17 @@ export default {
       tasks[this.selected].timer = parseInt(document.getElementById("timer").value);
       tasks[this.selected].checkKeyWord = document.getElementById("checkKeyWord").checked;
       tasks[this.selected].nbPubli = parseInt(document.getElementById("nbPubli").value);
-      tasks[this.selected].countries =
+      let elem = document.getElementById("countriesList");
+      let ths = elem.getElementsByTagName("p");
+      console.log(ths);
+      for (let i = 0; i < ths.length; i++) {
+        tasks[this.selected].profil.countries.push(ths[i].textContent);
+      }
+      //remove all p tag from dom
+      for (let i = 0; i < ths.length; i++) {
+        elem.removeChild(ths[i]);
+      }
+      console.log(tasks[this.selected].profil.countries);
       this.settasks(tasks);
       this.$emit('saveTasks')
     },

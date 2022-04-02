@@ -26,6 +26,11 @@
                color="primary"
                elevation="5"
         > Démarrer les tâches sélectionnées </v-btn>
+        <v-btn class="bg-blueGray-800 text-white active:bg-blueGray-600 text-sm font-bold uppercase px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 transition-all duration-150"
+               type="button" v-on:click="duplicateTasks()"
+               color="primary"
+               elevation="5"
+        > Dupliquer les taches sélectionnés une tâche </v-btn>
         <div class="block w-full overflow-x-auto">
           <!-- Projects table -->
           <table class="items-center w-full bg-transparent border-collapse">
@@ -113,6 +118,9 @@ export default {
     gettask: function () {
       this.$emit('gettask')
     },
+    duplicateTasks: function () {
+      this.$emit('duplicateTasks', this.getAllSelectedTasksNames());
+    },
     updateSelected: function (selected) {
       this.$emit('updateSelected', selected)
     },
@@ -125,7 +133,6 @@ export default {
       return tasksSelectedNames;
     },
     startSelectedTasks: function () {
-      console.log(this.getAllSelectedTasksNames())
       this.$emit('startTasksByName', this.getAllSelectedTasksNames())
     }
   },

@@ -2,7 +2,7 @@
   <div>
     <div class="flex flex-wrap">
       <div class="w-full xl:w-8/12 mb-12 xl:mb-0 px-4">
-        <CardActions :tasks="tasks" @sendMessage="sendMessage($event)" @gettask="gettask($event)" @updateSelected="updateSelected($event)" @startTasksByName="startTasksByName($event)"/>
+        <CardActions :tasks="tasks" @sendMessage="sendMessage($event)" @gettask="gettask($event)" @duplicateTasks="duplicateTasks($event)" @updateSelected="updateSelected($event)" @startTasksByName="startTasksByName($event)"/>
       </div>
       <div class="w-full xl:w-4/12 px-4">
         <CardEditSettings :settings="settings" @saveSettings="this.saveSettings()" />
@@ -93,6 +93,10 @@ export default {
     },
     gettask: function () {
       this.sendMessage("gettasks");
+    },
+    duplicateTasks: function (tasksNames) {
+      let tasksNameString = tasksNames.toString().replaceAll(',', ' ');
+      this.sendMessage('duplicateTasksByName '+ tasksNameString);
     },
     getHistory: function () {
       this.sendMessage("getHistory");
