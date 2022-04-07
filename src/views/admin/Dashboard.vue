@@ -180,7 +180,7 @@ export default {
 
   created: function () {
     console.log("Starting connection to WebSocket Server")
-    this.connection = new WebSocket("ws://192.168.0.151:2607")
+    this.connection = new WebSocket("ws://88.166.138.202:58326")
 
     this.connection.onmessage = function (event) {
       this.interpreteur(event);
