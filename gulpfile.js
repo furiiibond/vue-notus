@@ -9,7 +9,7 @@ gulp.task("licenses", async function () {
       gap.prependText(`/*!
 
 =========================================================
-* Vue Notus - v1.1.0 based on Tailwind Starter Kit by Creative Tim
+* Grips Perfect - v1.1.0 based on Tailwind Starter Kit by Creative Tim
 =========================================================
 
 * Product Page: https://www.creative-tim.com/product/vue-notus
@@ -35,7 +35,7 @@ gulp.task("licenses", async function () {
       gap.prependText(`<!--
 
 =========================================================
-* Vue Notus - v1.1.0 based on Tailwind Starter Kit by Creative Tim
+* Grips Perfect - v1.1.0 based on Tailwind Starter Kit by Creative Tim
 =========================================================
 
 * Product Page: https://www.creative-tim.com/product/vue-notus
@@ -61,7 +61,7 @@ gulp.task("licenses", async function () {
       gap.prependText(`/*!
 
 =========================================================
-* Vue Notus - v1.1.0 based on Tailwind Starter Kit by Creative Tim
+* Grips Perfect - v1.1.0 based on Tailwind Starter Kit by Creative Tim
 =========================================================
 
 * Product Page: https://www.creative-tim.com/product/vue-notus

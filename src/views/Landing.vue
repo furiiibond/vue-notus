@@ -25,7 +25,7 @@
                 </h1>
                 <p class="mt-4 text-lg text-blueGray-200">
                   This is a simple example of a Landing Page you can build using
-                  Vue Notus. It features multiple CSS components based on the
+                  Grips Perfect. It features multiple CSS components based on the
                   Tailwind CSS design system.
                 </p>
               </div>
@@ -139,7 +139,7 @@
                 go. Just make sure you enable them first via JavaScript.
               </p>
               <router-link to="/" class="font-bold text-blueGray-700 mt-8">
-                Check Vue Notus!
+                Check Grips Perfect!
               </router-link>
             </div>
 

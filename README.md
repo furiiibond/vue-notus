@@ -1,4 +1,4 @@
-# Vue Notus <a href="https://twitter.com/intent/tweet?url=https%3A%2F%2Fdemos.creative-tim.com%2Fvue-notus%2F%23%2F&text=Start%20your%20development%20with%20a%20Free%20Tailwind%20CSS%20and%20VueJS%20UI%20Kit%20and%20Admin.%20Let%20Vue%20Notus%20amaze%20you%20with%20its%20cool%20features%20and%20build%20tools%20and%20get%20your%20project%20to%20a%20whole%20new%20level.%20" target="_blank">![Tweet](https://img.shields.io/twitter/url/http/shields.io.svg?style=social&logo=twitter)</a>
+# Grips Perfect <a href="https://twitter.com/intent/tweet?url=https%3A%2F%2Fdemos.creative-tim.com%2Fvue-notus%2F%23%2F&text=Start%20your%20development%20with%20a%20Free%20Tailwind%20CSS%20and%20VueJS%20UI%20Kit%20and%20Admin.%20Let%20Vue%20Notus%20amaze%20you%20with%20its%20cool%20features%20and%20build%20tools%20and%20get%20your%20project%20to%20a%20whole%20new%20level.%20" target="_blank">![Tweet](https://img.shields.io/twitter/url/http/shields.io.svg?style=social&logo=twitter)</a>
 
 ![version](https://img.shields.io/badge/version-1.1.0-blue.svg) ![license](https://img.shields.io/badge/license-MIT-blue.svg) <a href="https://github.com/creativetimofficial/vue-notus/issues?q=is%3Aopen+is%3Aissue" target="_blank">![GitHub issues open](https://img.shields.io/github/issues/creativetimofficial/vue-notus.svg)</a> <a href="https://github.com/creativetimofficial/vue-notus/issues?q=is%3Aissue+is%3Aclosed" target="_blank">![GitHub issues closed](https://img.shields.io/github/issues-closed-raw/creativetimofficial/vue-notus.svg)</a> <a href="https://gitter.im/creative-tim-general/Lobby" target="_blank">![Join the chat at https://gitter.im/NIT-dgp/General](https://badges.gitter.im/NIT-dgp/General.svg)</a> <a href="https://discord.gg/E4aHAQy" target="_blank">![Chat](https://img.shields.io/badge/chat-on%20discord-7289da.svg)</a>
 
@@ -6,9 +6,9 @@
 
 ### A beautiful UI Kit and Admin for Tailwind CSS and VueJS.
 
-Start your development with a Free Tailwind CSS and VueJS UI Kit and Admin. Let Vue Notus amaze you with its cool features and build tools and get your project to a whole new level.
+Start your development with a Free Tailwind CSS and VueJS UI Kit and Admin. Let Grips Perfect amaze you with its cool features and build tools and get your project to a whole new level.
 
-Vue Notus is Free and Open Source. It features multiple HTML and VueJS elements and it comes with dynamic components for VueJS.
+Grips Perfect is Free and Open Source. It features multiple HTML and VueJS elements and it comes with dynamic components for VueJS.
 
 It is based on [Tailwind Starter Kit](https://www.creative-tim.com/learning-lab/tailwind-starter-kit/presentation?ref=vn-github-readme) by Creative Tim, and it is build with both presentation pages, and pages for an admin dashboard.
 
@@ -52,7 +52,7 @@ Here are all the page from the project:
 
 ### Fully Coded Components
 
-Vue Notus is built with over frontend 120 components, giving you the freedom of choosing and combining. All components can take variations in colors, that you can easily modify using Tailwind CSS classes (NOTE: each time you add a new class, a class that does not exist in `src/assets/styles/tailwind.css`, you will need to compile again tailwind).
+Grips Perfect is built with over frontend 120 components, giving you the freedom of choosing and combining. All components can take variations in colors, that you can easily modify using Tailwind CSS classes (NOTE: each time you add a new class, a class that does not exist in `src/assets/styles/tailwind.css`, you will need to compile again tailwind).
 
 You will save a lot of time going from prototyping to full-functional code, because all elements are implemented.
 This Free Tailwind CSS Template is coming with prebuilt examples, so the development process is seamless, switching from our pages to the real website is very easy to be done.
@@ -62,7 +62,7 @@ Every element has multiple states for colors, styles, hover, focus, that you can
 
 ### CSS Components
 
-Vue Notus comes with 120 Fully Coded CSS elements, such as [Alerts](https://www.creative-tim.com/learning-lab/tailwind/vue/alerts/notus?ref=vn-github-readme), [Buttons](https://www.creative-tim.com/learning-lab/tailwind/buttons/notus-vuejs?ref=vn-github-readme), [Inputs](https://www.creative-tim.com/learning-lab/tailwind/inputs/notus-vuejs?ref=vn-github-readme) and many more.
+Grips Perfect comes with 120 Fully Coded CSS elements, such as [Alerts](https://www.creative-tim.com/learning-lab/tailwind/vue/alerts/notus?ref=vn-github-readme), [Buttons](https://www.creative-tim.com/learning-lab/tailwind/buttons/notus-vuejs?ref=vn-github-readme), [Inputs](https://www.creative-tim.com/learning-lab/tailwind/inputs/notus-vuejs?ref=vn-github-readme) and many more.
 
 Please [check all of them here](https://www.creative-tim.com/learning-lab/tailwind/vue/alerts/notus?ref=vn-github-readme).
 
@@ -98,10 +98,10 @@ We also feature the following 18 dynamic components:
 
 | Angular | JavaScript / HTML | NextJS | React | Svelte | VueJS |
 | :---: | :---: | :---: | :---: | :---: | :---: |
-| [![Notus Angular](https://github.com/creativetimofficial/public-assets/blob/master/notus-angular/notus-angular.jpg?raw=true)](https://www.creative-tim.com/product/notus-angular?ref=vn-github-readme)  | [![Notus JS](https://github.com/creativetimofficial/public-assets/blob/master/notus-js/notus-js.jpg?raw=true)](https://www.creative-tim.com/product/notus-js?ref=vn-github-readme)  | [![Notus NextJS](https://github.com/creativetimofficial/public-assets/blob/master/notus-nextjs/notus-nextjs.jpg?raw=true)](https://www.creative-tim.com/product/notus-nextjs?ref=vn-github-readme)  | [![Notus React](https://github.com/creativetimofficial/public-assets/blob/master/notus-react/notus-react.jpg?raw=true)](https://www.creative-tim.com/product/notus-react?ref=vn-github-readme)  | [![Notus Svelte](https://github.com/creativetimofficial/public-assets/blob/master/notus-svelte/notus-svelte.jpg?raw=true)](https://www.creative-tim.com/product/notus-svelte?ref=vn-github-readme)  | [![Vue Notus](https://github.com/creativetimofficial/public-assets/blob/master/vue-notus/vue-notus.jpg?raw=true)](https://www.creative-tim.com/product/vue-notus?ref=vn-github-readme)
+| [![Notus Angular](https://github.com/creativetimofficial/public-assets/blob/master/notus-angular/notus-angular.jpg?raw=true)](https://www.creative-tim.com/product/notus-angular?ref=vn-github-readme)  | [![Notus JS](https://github.com/creativetimofficial/public-assets/blob/master/notus-js/notus-js.jpg?raw=true)](https://www.creative-tim.com/product/notus-js?ref=vn-github-readme)  | [![Notus NextJS](https://github.com/creativetimofficial/public-assets/blob/master/notus-nextjs/notus-nextjs.jpg?raw=true)](https://www.creative-tim.com/product/notus-nextjs?ref=vn-github-readme)  | [![Notus React](https://github.com/creativetimofficial/public-assets/blob/master/notus-react/notus-react.jpg?raw=true)](https://www.creative-tim.com/product/notus-react?ref=vn-github-readme)  | [![Notus Svelte](https://github.com/creativetimofficial/public-assets/blob/master/notus-svelte/notus-svelte.jpg?raw=true)](https://www.creative-tim.com/product/notus-svelte?ref=vn-github-readme)  | [![Grips Perfect](https://github.com/creativetimofficial/public-assets/blob/master/vue-notus/vue-notus.jpg?raw=true)](https://www.creative-tim.com/product/vue-notus?ref=vn-github-readme)
 
 ## Documentation
-The documentation for the Vue Notus is hosted at our <a href="https://www.creative-tim.com/learning-lab/tailwind/vue/overview/notus?ref=vn-readme" target="_blank">website</a>.
+The documentation for the Grips Perfect is hosted at our <a href="https://www.creative-tim.com/learning-lab/tailwind/vue/overview/notus?ref=vn-readme" target="_blank">website</a>.
 
 ## Quick start
 
@@ -192,9 +192,9 @@ At present, we officially aim to support the last two versions of the following 
 
 ## Reporting Issues
 
-We use GitHub Issues as the official bug tracker for the Vue Notus. Here are some advices for our users that want to report an issue:
+We use GitHub Issues as the official bug tracker for the Grips Perfect. Here are some advices for our users that want to report an issue:
 
-1. Make sure that you are using the latest version of the Vue Notus. Check the CHANGELOG from your dashboard on our <a href="https://www.creative-tim.com/?ref=vn-readme" target="_blank">website</a>.
+1. Make sure that you are using the latest version of the Grips Perfect. Check the CHANGELOG from your dashboard on our <a href="https://www.creative-tim.com/?ref=vn-readme" target="_blank">website</a>.
 2. Providing us reproducible steps for the issue will shorten the time it takes for it to be fixed.
 3. Some issues may be browser specific, so specifying in what browser you encountered the issue might help.
 

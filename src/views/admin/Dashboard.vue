@@ -22,7 +22,7 @@
         <Toast ref = "toast"/>
       </div>
       <div class="w-full xl:w-8/12 mb-12 xl:mb-0 px-4">
-        <CardMultipleEditTask ref="CardMultipleEditTask" @saveTasks="this.saveTasks()" :tasks="tasks" :selected="selected" @sendMessage="sendMessage($event)" @enableLoading="enableLoading($event)" @settasks="settasks($event)" @deleteTask="deleteTask($event)" @updateSelected="updateSelected($event)"/>
+<!--        <CardMultipleEditTask ref="CardMultipleEditTask" @saveTasks="this.saveTasks()" :tasks="tasks" :selected="selected" @sendMessage="sendMessage($event)" @enableLoading="enableLoading($event)" @settasks="settasks($event)" @deleteTask="deleteTask($event)" @updateSelected="updateSelected($event)"/>-->
         <Toast ref = "toast"/>
       </div>
     </div>
@@ -42,7 +42,7 @@ import Toast from "@/components/Toast";
 import {createToast} from "mosha-vue-toastify";
 import Loading from 'vue-loading-overlay';
 import 'vue-loading-overlay/dist/vue-loading.css';
-import CardMultipleEditTask from "@/components/Cards/CardMultipleEditTask";
+// import CardMultipleEditTask from "@/components/Cards/CardMultipleEditTask";
 export default {
   name: "dashboard-page",
   components: {
@@ -53,7 +53,7 @@ export default {
     Toast,
     Loading,
     CardEditSettings,
-    CardMultipleEditTask
+    // CardMultipleEditTask
   },
   data: function() {
     return {
@@ -180,7 +180,7 @@ export default {
 
   created: function () {
     console.log("Starting connection to WebSocket Server")
-    this.connection = new WebSocket("ws://192.168.0.70:2607")
+    this.connection = new WebSocket("ws://192.168.0.151:2607")
 
     this.connection.onmessage = function (event) {
       this.interpreteur(event);

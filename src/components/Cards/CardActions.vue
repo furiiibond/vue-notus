@@ -20,7 +20,7 @@
                type="button" v-on:click="gettask()"
                color="primary"
                elevation="5"
-        > Voir les tâches </v-btn>
+        > reload </v-btn>
         <v-btn class="bg-blueGray-800 text-white active:bg-blueGray-600 text-sm font-bold uppercase px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 transition-all duration-150"
                type="button" v-on:click="startSelectedTasks()"
                color="primary"

@@ -119,7 +119,7 @@
                       CSS Components
                     </h6>
                     <p class="mb-4 text-blueGray-500">
-                      Vue Notus comes with a huge number of Fully Coded CSS
+                      Grips Perfect comes with a huge number of Fully Coded CSS
                       components.
                     </p>
                   </div>
@@ -168,7 +168,7 @@
                     </h6>
                     <p class="mb-4 text-blueGray-500">
                       Built by developers for developers. You will love how easy
-                      is to to work with Vue Notus.
+                      is to to work with Grips Perfect.
                     </p>
                   </div>
                 </div>
@@ -561,7 +561,7 @@
         <div class="w-full md:w-6/12 px-12 md:px-4">
           <h2 class="font-semibold text-4xl">Beautiful Example Pages</h2>
           <p class="text-lg leading-relaxed mt-4 mb-4 text-blueGray-500">
-            Vue Notus is a completly new product built using our past experience
+            Grips Perfect is a completly new product built using our past experience
             in web templates. Take the examples we made for you and start
             playing with them.
           </p>
