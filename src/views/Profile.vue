@@ -111,7 +111,7 @@
                   <i
                     class="fas fa-briefcase mr-2 text-lg text-blueGray-400"
                   ></i>
-                  Solution Manager - Creative Tim Officer
+                  Solution Manager -JC CorpOfficer
                 </div>
                 <div class="mb-2 text-blueGray-600">
                   <i

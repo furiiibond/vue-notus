@@ -34,7 +34,7 @@
 </template>
 <script>
 import CardLineChart from "@/components/Cards/CardLineChart.vue";
-import CardSocialTraffic from "@/components/Cards/CardSocialTraffic.vue";
+// import CardSocialTraffic from "@/components/Cards/CardSocialTraffic.vue";
 import CardActions from "@/components/Cards/CardActions";
 import CardEditTask from "@/components/Cards/CardEditTask";
 import CardEditSettings from "@/components/Cards/CardEditSettings";
@@ -48,7 +48,7 @@ export default {
   components: {
     CardEditTask,
     CardLineChart,
-    CardSocialTraffic,
+    // CardSocialTraffic,
     CardActions,
     Toast,
     Loading,
