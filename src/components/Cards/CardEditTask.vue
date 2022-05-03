@@ -28,6 +28,15 @@
 
           <br><br>
           <label class="block uppercase text-blueGray-600 text-xs font-bold mb-2" htmlFor="grid-password">
+            Groupe (utilise la même liste de lien temporaire)
+          </label>
+          <input :value="tasks[selected].filePath" id="p-group"
+                 class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150"
+                 type="text"
+          />
+
+          <br><br>
+          <label class="block uppercase text-blueGray-600 text-xs font-bold mb-2" htmlFor="grid-password">
             Email
           </label>
 
@@ -218,6 +227,7 @@ export default {
     },
     updateTasks: function (tasks) {
       tasks[this.selected].profil.name = document.getElementById("p-name").value;
+      tasks[this.selected].filePath = document.getElementById("p-group").value;
       tasks[this.selected].profil.user = document.getElementById("p-user").value;
       tasks[this.selected].profil.password = document.getElementById("p-password").value;
       tasks[this.selected].profil.textToPubli = document.getElementById("p-texttopubli").value;
