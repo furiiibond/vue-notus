@@ -139,8 +139,14 @@
           <table>
             <tbody id="countriesList">
               <tr v-for="(country) in tasks[selected].profil.countries" :key="country">
-                <th class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left">
+                <th  class="country border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left">
                   {{country}}
+                </th>
+                <th>
+                  <div class="text-blueGray-600 text-sm font-semibold text-blueGray-600"
+                          v-on:click="removeCountry(country)">
+                    <i class="fas fa-times"></i>
+                  </div>
                 </th>
               </tr>
             </tbody>
@@ -193,7 +199,8 @@ export default {
   },
   data() {
     return {
-      countries: {}
+      countries: {},
+      countriesToRemove: [],
     };
   },
   methods: {
@@ -243,6 +250,12 @@ export default {
       for (let i = 0; i < ths.length; i++) {
         tasks[this.selected].profil.countries.push(ths[i].textContent);
       }
+      for (let i = 0; i < this.countriesToRemove.length; i++) {
+        console.log(this.countriesToRemove[i]);
+        if (tasks[this.selected].profil.countries.includes(this.countriesToRemove[i])) {
+          tasks[this.selected].profil.countries.splice(tasks[this.selected].profil.countries.indexOf(this.countriesToRemove[i]), 1);
+        }
+      }
       //remove all p tag from dom
       for (let i = 0; i < ths.length; i++) {
         elem.removeChild(ths[i]);
@@ -266,7 +279,19 @@ export default {
     },
     setCountries: function (countries) {
       this.countries = countries
-    }
+    },
+    removeCountry : function (country) {
+      let elem = document.getElementById("countriesList");
+      let trs = elem.getElementsByTagName("tr");
+      let countries = document.getElementsByClassName("country")
+      for (let i = 0; i < trs.length; i++) {
+        if (countries[i].textContent === country) {
+          elem.removeChild(trs[i]);
+        }
+      }
+      //add in countriesToRemove
+      this.countriesToRemove.push(country);
+    },
   }
 
 }
